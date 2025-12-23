@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { FileText, Video, Database, ChevronUp, ChevronDown, Check, Maximize2, Loader2, Star, MonitorPlay, X } from 'lucide-react';
+import { FileText, Video, Database, ChevronUp, ChevronDown, Check, Maximize2, Loader2, Star, MonitorPlay, X, Mail } from 'lucide-react';
 
 const ProcessDetails = () => {
     const { id } = useParams();
@@ -178,9 +178,9 @@ const ProcessDetails = () => {
                                                         <rect x="0.75" y="0.75" width="6.5" height="6.5" rx="2"
                                                             className={
                                                                 log.status === 'warning' ? "fill-yellow-100 stroke-yellow-700" :
-                                                                log.status === 'error' ? "fill-red-100 stroke-red-700" :
-                                                                log.status === 'success' ? "fill-green-100 stroke-green-700" :
-                                                                "fill-blue-100 stroke-blue-700"
+                                                                    log.status === 'error' ? "fill-red-100 stroke-red-700" :
+                                                                        log.status === 'success' ? "fill-green-100 stroke-green-700" :
+                                                                            "fill-blue-100 stroke-blue-700"
                                                             }
                                                             strokeWidth="1.5" />
                                                     </svg>
@@ -242,6 +242,24 @@ const ProcessDetails = () => {
                                                         })}
                                                     </div>
                                                 )}
+
+                                                {log.status === 'error' && (
+                                                    <div className="mt-4">
+                                                        <button
+                                                            onClick={() => setActiveArtifact({
+                                                                type: 'email',
+                                                                label: 'Patient Notification',
+                                                                id: 'email-notification-101'
+                                                            })}
+                                                            className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors shadow-sm"
+                                                        >
+                                                            <div className="w-5 h-5 flex items-center justify-center">
+                                                                <img src="/gmail-icon.png" alt="Gmail" className="w-4 h-4 object-contain" />
+                                                            </div>
+                                                            Notify Patient via Mail
+                                                        </button>
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
@@ -255,11 +273,11 @@ const ProcessDetails = () => {
             {/* Right Sidebar - Key Details OR Artifact Preview */}
             <aside className={`${activeArtifact ? 'w-[500px]' : 'w-80'} border-l border-gray-200 bg-white overflow-hidden flex flex-col transition-all duration-300 ease-in-out`}>
                 {activeArtifact ? (
-                    <div className="flex flex-col h-full">
+                    <div className="flex flex-col h-full bg-white">
                         {/* Preview Header */}
                         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 bg-white">
                             <h3 className="text-sm font-semibold text-gray-900">
-                                {activeArtifact.type === 'file' ? 'Document' : 'Video'}
+                                {activeArtifact.type === 'file' ? 'Document' : activeArtifact.type === 'video' ? 'Video' : 'Email'}
                             </h3>
                             <button
                                 onClick={() => setActiveArtifact(null)}
@@ -269,18 +287,89 @@ const ProcessDetails = () => {
                             </button>
                         </div>
                         {/* Preview Content */}
-                        <div className="flex-1 overflow-hidden bg-gray-50 p-4">
+                        <div className="flex-1 overflow-hidden bg-gray-50">
                             {activeArtifact.type === 'file' ? (
-                                <iframe
-                                    src={activeArtifact.pdfPath}
-                                    className="w-full h-full border border-gray-200 rounded-xl shadow-sm"
-                                    title={activeArtifact.label}
-                                />
+                                <div className="p-4 h-full">
+                                    <iframe
+                                        src={activeArtifact.pdfPath}
+                                        className="w-full h-full border border-gray-200 rounded-xl shadow-sm bg-white"
+                                        title={activeArtifact.label}
+                                    />
+                                </div>
+                            ) : activeArtifact.type === 'video' ? (
+                                <div className="p-4 h-full">
+                                    <div className="h-full flex items-center justify-center bg-black rounded-xl overflow-hidden shadow-sm">
+                                        <video controls autoPlay className="max-w-full max-h-full" src={activeArtifact.videoPath}>
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    </div>
+                                </div>
                             ) : (
-                                <div className="h-full flex items-center justify-center bg-black rounded-xl overflow-hidden shadow-sm">
-                                    <video controls autoPlay className="max-w-full max-h-full" src={activeArtifact.videoPath}>
-                                        Your browser does not support the video tag.
-                                    </video>
+                                /* Email Preview UI */
+                                <div className="flex flex-col h-full bg-white font-sans">
+                                    <div className="flex-1 overflow-y-auto p-8 space-y-8">
+                                        {/* Email Headers */}
+                                        <div className="space-y-5">
+                                            <div className="grid grid-cols-[60px_1fr] items-center gap-4">
+                                                <label className="text-sm font-medium text-gray-500 text-right">To</label>
+                                                <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-lg border border-gray-200">
+                                                    <span className="text-sm text-gray-900 font-medium">Robert.J.Anderson@example.com</span>
+                                                    <button className="text-gray-400 hover:text-gray-600 ml-auto p-0.5 rounded-full hover:bg-gray-200 transition-colors">
+                                                        <X className="h-3.5 w-3.5" />
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div className="grid grid-cols-[60px_1fr] items-center gap-4">
+                                                <label className="text-sm font-medium text-gray-500 text-right">Subject</label>
+                                                <input
+                                                    type="text"
+                                                    value="Action Required: Claim Determination - Secondary Payer Notification"
+                                                    readOnly
+                                                    className="w-full text-sm text-gray-900 font-medium px-3 py-2 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-100"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div className="h-px bg-gray-100 w-full" />
+
+                                        {/* Email Body */}
+                                        <div className="prose prose-slate max-w-none text-gray-600 leading-relaxed text-sm">
+                                            <p className="mb-4">Dear Mr. Anderson,</p>
+                                            <p className="mb-4">We have processed your recent claim (ID: CLM-2024-1202-792468) for services rendered on December 2, 2024.</p>
+
+                                            <div className="my-6 p-4 bg-[#FFF9EA] border border-[#F5E6C8] rounded-xl text-[#7A5400] text-sm shadow-sm">
+                                                <strong className="block mb-1 font-semibold">Notice:</strong>
+                                                Our records indicate that UHC is the secondary payer for this claim. Medicare appears to be the primary payer.
+                                            </div>
+
+                                            <p className="mb-4">Please submit this claim to Medicare first. Once Medicare has processed the claim, you may resubmit the Explanation of Benefits (EOB) to us for secondary consideration.</p>
+                                            <p className="mb-6">If you have any questions, please contact our Member Services team.</p>
+
+                                            <div className="mt-8 text-gray-500">
+                                                <p className="mb-1">Regards,</p>
+                                                <p className="font-semibold text-gray-700">UHC Claims Team</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Email Footer / Actions */}
+                                    <div className="p-6 border-t border-gray-200 bg-white flex justify-end gap-3 sticky bottom-0 z-10">
+                                        <button
+                                            onClick={() => setActiveArtifact(null)}
+                                            className="px-5 py-2.5 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors"
+                                        >
+                                            Cancel
+                                        </button>
+                                        <button
+                                            onClick={() => {
+                                                /* Mock Send Action */
+                                                setActiveArtifact(null);
+                                            }}
+                                            className="px-5 py-2.5 bg-[#1F2937] text-white text-sm font-semibold rounded-lg hover:bg-black transition-all shadow-md hover:shadow-lg transform active:scale-95 duration-200"
+                                        >
+                                            Approve & Send
+                                        </button>
+                                    </div>
                                 </div>
                             )}
                         </div>
