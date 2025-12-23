@@ -1,0 +1,88 @@
+{
+    "logs": [
+        {
+            "id": "act_1764881288920",
+            "time": "02:18 AM",
+            "title": "Received request for Cash Position Data from 1st March to 15th March with Daily steps",
+            "type": "success",
+            "status": "success"
+        },
+        {
+            "id": "act_1764881289588",
+            "time": "02:18 AM",
+            "title": "Logging into Kyriba Portal with OTP Authentication",
+            "type": "success",
+            "status": "success",
+            "artifacts": [
+                {
+                    "type": "video",
+                    "label": "Login Video",
+                    "id": "art-login-23",
+                    "icon": "video",
+                    "videoPath": "/videos/e3590599b7161b416e03c895a1bbb703.webm"
+                }
+            ]
+        },
+        {
+            "id": "act_1764881294709",
+            "time": "02:18 AM",
+            "title": "Applied Date filters to extract Cash Position Data: Daily steps - 1st March to 15th March",
+            "type": "success",
+            "status": "success",
+            "artifacts": [
+                {
+                    "type": "video",
+                    "label": "Extraction Video",
+                    "id": "art-extract-23",
+                    "icon": "video",
+                    "videoPath": "/videos/e3590599b7161b416e03c895a1bbb703.webm"
+                }
+            ]
+        },
+        {
+            "id": "act_1764881298618",
+            "time": "02:18 AM",
+            "title": "Successfully downloaded Filtered PDF",
+            "type": "success",
+            "status": "success",
+            "artifacts": [
+                {
+                    "type": "file",
+                    "label": "Cash Position PDF",
+                    "id": "art-pdf-23",
+                    "icon": "file",
+                    "pdfPath": "/data/process_23_data.pdf"
+                }
+            ]
+        }
+    ],
+    "keyDetails": {
+        "processName": "Cash Position Extraction",
+        "team": "Cash",
+        "processingDate": "2025-12-04",
+        "status": "Complete"
+    },
+    "sidebarArtifacts": [
+        {
+            "type": "video",
+            "label": "Login Video",
+            "id": "art-login-23",
+            "icon": "video",
+            "videoPath": "/videos/e3590599b7161b416e03c895a1bbb703.webm"
+        },
+        {
+            "type": "video",
+            "label": "Extraction Video",
+            "id": "art-extract-23",
+            "icon": "video",
+            "videoPath": "/videos/e3590599b7161b416e03c895a1bbb703.webm"
+        },
+        {
+            "type": "file",
+            "label": "Cash Position PDF",
+            "id": "art-pdf-23",
+            "icon": "file",
+            "pdfPath": "/data/process_23_data.pdf"
+        }
+    ]
+}

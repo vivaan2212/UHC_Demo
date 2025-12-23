@@ -1,0 +1,16 @@
+[
+    {
+        "id": "100",
+        "stockId": "Claim Submission Received",
+        "name": "MRI Claim",
+        "year": "2025-12-05",
+        "status": "Done"
+    },
+    {
+        "id": "101",
+        "stockId": "Claim Submission Received",
+        "name": "MRI Claim",
+        "year": "2025-12-05",
+        "status": "Needs Attention"
+    }
+]

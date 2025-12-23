@@ -1,0 +1,355 @@
+{
+    "logs": [
+        {
+            "id": "act_101_1",
+            "time": "10:00 AM",
+            "title": "Claim Submission Received",
+            "type": "success",
+            "status": "success",
+            "artifacts": [
+                {
+                    "type": "file",
+                    "label": "Clinical Note",
+                    "id": "art-clin-101",
+                    "icon": "file",
+                    "pdfPath": "/data/case_101/Anderson_Step1_Clinical_Note.pdf"
+                },
+                {
+                    "type": "file",
+                    "label": "Patient Info",
+                    "id": "art-pat-101",
+                    "icon": "file",
+                    "pdfPath": "/data/case_101/Anderson_Step1_Patient_Demographics.pdf"
+                }
+            ]
+        },
+        {
+            "id": "act_101_2",
+            "time": "10:01 AM",
+            "title": "Claim Ingestion & Data Normalization",
+            "type": "success",
+            "status": "success",
+            "reasoning": [
+                "ANDERSONCPA_837P_20241202_103000.edi via Availity",
+                "MD5: c9d5e2f1a6b7c8d9e0f1a2b3c4d5e6f7 verified",
+                "EDI integrity, structure, control balancing - passed",
+                "CPT 99214, 93000, ICD I10 - valid codes",
+                "UHC payer rules - passed",
+                "Extracting data from 30 EDI segments",
+                "ANDERSON, ROBERT J, DOB: 03/15/1957 (Age 67)",
+                "Patient age 67 - Medicare-eligible. COB flag set.",
+                "2 lines: 99214 ($250), 93000 ($200) = $450 total",
+                "Claim object: CLM-2024-1202-792468",
+                "Digital office note attached (not scanned)",
+                "Names, dates, codes standardized",
+                "Claim ingested. COB flag active for Step 6."
+            ]
+        },
+        {
+            "id": "act_101_3",
+            "time": "10:02 AM",
+            "title": "Eligibility Verification",
+            "type": "warning",
+            "status": "warning",
+            "reasoning": [
+                "Member: UHC-7924681, DOB: 1957-03-15, DOS: 2024-12-02",
+                "Connected to Facets Membership Module v12.4",
+                "ANDERSON, ROBERT J - record verified",
+                "Claim DOB matches member record",
+                "Plan: Choice Plus PPO, Group: ACPA2024",
+                "Anderson & Associates CPA - 15 employees",
+                "Age 67 + Employer <20 = Medicare may be primary",
+                "Ded: $1000 ($250 remaining), Coins: 80/20",
+                "99214, 93000 covered subject to ded/coins",
+                "No duplicate claims found",
+                "COB-FLAG-001: MSP verification required Step 6",
+                "Eligible. COB flag active."
+            ],
+            "artifacts": [
+                {
+                    "type": "file",
+                    "label": "Eligibility Verification",
+                    "id": "art-elig-101",
+                    "icon": "file",
+                    "pdfPath": "/data/case_101/Anderson_Step2_Eligibility_Verification.pdf"
+                }
+            ]
+        },
+        {
+            "id": "act_101_4",
+            "time": "10:03 AM",
+            "title": "Provider Validation",
+            "type": "success",
+            "status": "success",
+            "reasoning": [
+                "2 providers: Billing, Rendering",
+                "Query NPI 1357924680 (Austin Cardiology)",
+                "Type 2 (Org), Active, Taxonomy 207RC0000X",
+                "Contract UHC-ACA-2023-892 active",
+                "Query NPI 1928376540 (Chen, David W MD)",
+                "Type 1 (Individual), Active, Cardiology",
+                "Participating under facility contract",
+                "TX medical licenses active for all",
+                "All in-network - NSA not applicable",
+                "All providers valid and in-network"
+            ],
+            "artifacts": [
+                {
+                    "type": "file",
+                    "label": "Provider Validation",
+                    "id": "art-prov-101",
+                    "icon": "file",
+                    "pdfPath": "/data/case_101/Anderson_Step3_Provider_Validation.pdf"
+                }
+            ]
+        },
+        {
+            "id": "act_101_5",
+            "time": "10:04 AM",
+            "title": "Clinical Review (Medical Necessity)",
+            "type": "success",
+            "status": "success",
+            "reasoning": [
+                "Evaluating 99214, 93000 with DX I10",
+                "E&M Office Visit + Diagnostic EKG",
+                "99214 + I10 = Valid combination",
+                "93000 + I10 = Valid (cardiac eval for HTN)",
+                "No LCD restrictions for 99214, 93000",
+                "No NCD restrictions apply",
+                "No frequency limits exceeded",
+                "Not required for E&M or EKG",
+                "Both services medically necessary",
+                "All services approved"
+            ],
+            "artifacts": [
+                {
+                    "type": "file",
+                    "label": "Clinical Review",
+                    "id": "art-clin-rev-101",
+                    "icon": "file",
+                    "pdfPath": "/data/case_101/Anderson_Step4_Clinical_Review.pdf"
+                }
+            ]
+        },
+        {
+            "id": "act_101_6",
+            "time": "10:05 AM",
+            "title": "Pricing & Adjudication (Preliminary)",
+            "type": "success",
+            "status": "success",
+            "reasoning": [
+                "2 service lines, $450 total billed",
+                "In-network contracted rates",
+                "99214: Billed $250, Allowed $165",
+                "93000: Billed $200, Allowed $75",
+                "$240.00 (Contractual adj: $210.00)",
+                "Cannot finalize - MSP check required",
+                "IF UHC primary: $240 to ded → Member pays $240",
+                "Final adjudication deferred to post-COB",
+                "Preliminary pricing complete. Awaiting Step 6.",
+                "Claim routed to COB determination"
+            ],
+            "artifacts": [
+                {
+                    "type": "file",
+                    "label": "Pricing Preliminary",
+                    "id": "art-price-101",
+                    "icon": "file",
+                    "pdfPath": "/data/case_101/Anderson_Step5_Pricing_Preliminary.pdf"
+                }
+            ]
+        },
+        {
+            "id": "act_101_7",
+            "time": "10:06 AM",
+            "title": "Coordination of Benefits",
+            "type": "warning",
+            "status": "warning",
+            "reasoning": [
+                "Processing COB flag from Step 2",
+                "Loop 2320 (Other Insurance): NOT PRESENT",
+                "No other coverage on file for member",
+                "Age 67 + Employer <20 = Medicare may be primary",
+                "Initiating agentic resolution workflow",
+                "Identified: Age 67, Employer 15 EE, No Medicare on file",
+                "Initiating B2B portal bot for HETS query",
+                "NM1*IL*1*ANDERSON*ROBERT*J***34*XXX-XX-4521~",
+                "NM1*IL*1*ANDERSON*ROBERT*J***MI*1EG4-TE5-MK72~",
+                "EB*1*IND*30**MA~ (Active)",
+                "EB*1*IND*30**MB~ (Active)",
+                "DTP*346*D8*20220301~ (03/01/2022)",
+                "Medicare eligibility inquiry for SSN ***-**-4521",
+                "Medicare Part A & B ACTIVE since 03/01/2022",
+                "Beneficiary: 1EG4-TE5-MK72",
+                "Applying MSP decision tree",
+                "42 CFR § 411.100: Aged beneficiary rules",
+                "15 employees < 20 threshold",
+                "MEDICARE IS PRIMARY (small employer rule)",
+                "Updating member COB record in Facets",
+                "Primary: Medicare, Secondary: UHC",
+                "Medicare primary determined. Claim to be denied."
+            ],
+            "artifacts": [
+                {
+                    "type": "file",
+                    "label": "COB Exception",
+                    "id": "art-cob-exc-101",
+                    "icon": "file",
+                    "pdfPath": "/data/case_101/Anderson_Step6_COB_Exception_Resolution.pdf"
+                },
+                {
+                    "type": "file",
+                    "label": "HETS Query Log",
+                    "id": "art-hets-101",
+                    "icon": "file",
+                    "pdfPath": "/data/case_101/Anderson_Step6_HETS_Query_Log.pdf"
+                },
+                {
+                    "type": "video",
+                    "label": "Browser Agent: COB Check",
+                    "id": "vid-cob-101",
+                    "icon": "video",
+                    "videoPath": "/data/videos/browser_agent_cob_placeholder.mp4"
+                }
+            ]
+        },
+        {
+            "id": "act_101_8",
+            "time": "10:07 AM",
+            "title": "Denial & Remittance Generation",
+            "type": "error",
+            "status": "error",
+            "reasoning": [
+                "Generating denial for COB - other payer primary",
+                "CARC OA-23: Other payer primary responsibility",
+                "Submit to primary payer first",
+                "Claim forwarded to primary insurer",
+                "Primary payer info was missing",
+                "Generating EDI 835 denial remittance",
+                "BPR*H*0 (zero payment), CAS*OA*23*450",
+                "Instructions: Bill Medicare 1EG4-TE5-MK72 first",
+                "COB explanation, no payment due yet",
+                "835 to clearinghouse, EOB to mail/portal",
+                "Claim denied. All outputs generated."
+            ],
+            "artifacts": [
+                {
+                    "type": "file",
+                    "label": "EDI 835 Denial",
+                    "id": "art-denial-101",
+                    "icon": "file",
+                    "pdfPath": "/data/case_101/Anderson_Step7_EDI_835_Denial.pdf"
+                },
+                {
+                    "type": "file",
+                    "label": "Member EOB",
+                    "id": "art-eob-101",
+                    "icon": "file",
+                    "pdfPath": "/data/case_101/Anderson_Step7_Member_EOB.pdf"
+                },
+                {
+                    "type": "file",
+                    "label": "Provider Notice",
+                    "id": "art-prov-not-101",
+                    "icon": "file",
+                    "pdfPath": "/data/case_101/Anderson_Step7_Provider_Notice.pdf"
+                }
+            ]
+        }
+    ],
+    "keyDetails": {
+        "Status": "Needs Attention",
+        "Patient": "Robert J. Anderson",
+        "Date of Service": "December 2, 2024",
+        "Claim ID": "CLM-2024-1202-792468",
+        "Billed Amount": "$450.00",
+        "Plan": "Choice Plus PPO",
+        "Alert": "COB - Secondary Payer"
+    },
+    "sidebarArtifacts": [
+        {
+            "type": "file",
+            "label": "Clinical Note",
+            "id": "art-clin-101",
+            "icon": "file",
+            "pdfPath": "/data/case_101/Anderson_Step1_Clinical_Note.pdf"
+        },
+        {
+            "type": "file",
+            "label": "Patient Info",
+            "id": "art-pat-101",
+            "icon": "file",
+            "pdfPath": "/data/case_101/Anderson_Step1_Patient_Demographics.pdf"
+        },
+        {
+            "type": "file",
+            "label": "Eligibility Verification",
+            "id": "art-elig-101",
+            "icon": "file",
+            "pdfPath": "/data/case_101/Anderson_Step2_Eligibility_Verification.pdf"
+        },
+        {
+            "type": "file",
+            "label": "Provider Validation",
+            "id": "art-prov-101",
+            "icon": "file",
+            "pdfPath": "/data/case_101/Anderson_Step3_Provider_Validation.pdf"
+        },
+        {
+            "type": "file",
+            "label": "Clinical Review",
+            "id": "art-clin-rev-101",
+            "icon": "file",
+            "pdfPath": "/data/case_101/Anderson_Step4_Clinical_Review.pdf"
+        },
+        {
+            "type": "file",
+            "label": "Pricing Preliminary",
+            "id": "art-price-101",
+            "icon": "file",
+            "pdfPath": "/data/case_101/Anderson_Step5_Pricing_Preliminary.pdf"
+        },
+        {
+            "type": "file",
+            "label": "COB Exception",
+            "id": "art-cob-exc-101",
+            "icon": "file",
+            "pdfPath": "/data/case_101/Anderson_Step6_COB_Exception_Resolution.pdf"
+        },
+        {
+            "type": "file",
+            "label": "HETS Query Log",
+            "id": "art-hets-101",
+            "icon": "file",
+            "pdfPath": "/data/case_101/Anderson_Step6_HETS_Query_Log.pdf"
+        },
+        {
+            "type": "video",
+            "label": "Browser Agent: COB Check",
+            "id": "vid-cob-101",
+            "icon": "video",
+            "videoPath": "/data/videos/browser_agent_cob_placeholder.mp4"
+        },
+        {
+            "type": "file",
+            "label": "EDI 835 Denial",
+            "id": "art-denial-101",
+            "icon": "file",
+            "pdfPath": "/data/case_101/Anderson_Step7_EDI_835_Denial.pdf"
+        },
+        {
+            "type": "file",
+            "label": "Member EOB",
+            "id": "art-eob-101",
+            "icon": "file",
+            "pdfPath": "/data/case_101/Anderson_Step7_Member_EOB.pdf"
+        },
+        {
+            "type": "file",
+            "label": "Provider Notice",
+            "id": "art-prov-not-101",
+            "icon": "file",
+            "pdfPath": "/data/case_101/Anderson_Step7_Provider_Notice.pdf"
+        }
+    ]
+}

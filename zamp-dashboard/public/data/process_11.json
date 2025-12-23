@@ -1,0 +1,66 @@
+{
+    "logs": [
+        {
+            "id": "act_1764736202203",
+            "time": "10:00 AM",
+            "title": "Received request for Cash Position Data from 1st March to 15th March with Daily steps",
+            "type": "success",
+            "status": "success"
+        },
+        {
+            "id": "act_1764736205766",
+            "time": "10:00 AM",
+            "title": "Logging into Kyriba Portal with OTP Authentication",
+            "type": "success",
+            "status": "success",
+            "artifacts": [
+                {
+                    "type": "video",
+                    "label": "Login Video",
+                    "id": "art-login-11",
+                    "icon": "video",
+                    "videoPath": "/videos/ce2727eac32670fec102d7ec77b4badb.webm"
+                }
+            ]
+        },
+        {
+            "id": "act_1764736212903",
+            "time": "10:00 AM",
+            "title": "Applied Date filters to extract Cash Position Data: Daily steps - 1st March to 15th March",
+            "type": "success",
+            "status": "success",
+            "artifacts": [
+                {
+                    "type": "video",
+                    "label": "Extraction Video",
+                    "id": "art-extract-11",
+                    "icon": "video",
+                    "videoPath": "/videos/ce2727eac32670fec102d7ec77b4badb.webm"
+                }
+            ]
+        },
+        {
+            "id": "act_1764736216785",
+            "time": "10:00 AM",
+            "title": "Successfully downloaded Filtered PDF",
+            "type": "success",
+            "status": "success",
+            "artifacts": [
+                {
+                    "type": "file",
+                    "label": "Cash Position PDF",
+                    "id": "art-pdf-11",
+                    "icon": "file",
+                    "pdfPath": "/data/process_11_data.pdf"
+                }
+            ]
+        }
+    ],
+    "keyDetails": {
+        "processName": "Cash Position Extraction",
+        "team": "Cash",
+        "processingDate": "2025-12-03",
+        "status": "Complete"
+    },
+    "sidebarArtifacts": []
+}

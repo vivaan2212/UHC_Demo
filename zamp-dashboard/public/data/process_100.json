@@ -1,0 +1,330 @@
+{
+    "logs": [
+        {
+            "id": "act_1764918749157",
+            "time": "12:42 PM",
+            "title": "Claim Submission Received",
+            "type": "success",
+            "status": "success",
+            "artifacts": [
+                {
+                    "type": "file",
+                    "label": "UHC Prior Authorization",
+                    "id": "art-claim-100",
+                    "icon": "file",
+                    "pdfPath": "/data/case_100/claim_submission.pdf"
+                },
+                {
+                    "type": "file",
+                    "label": "Patient Info",
+                    "id": "art-patient-100",
+                    "icon": "file",
+                    "pdfPath": "/data/case_100/Martinez_Step1_Patient_Demographics.pdf"
+                }
+            ]
+        },
+        {
+            "id": "act_1764918750536",
+            "time": "12:42 PM",
+            "title": "Claim Ingestion & Data Normalization",
+            "type": "success",
+            "status": "success",
+            "reasoning": [
+                "AUSTINIMAGING_837P_20241205_091500.ed received",
+                "MD5: a8b7c6d5e4f3g2h1i0j9k8l7m6n5o4p3 verified",
+                "EDI integrity, structure, balancing - passed",
+                "CPT 73721, ICD M23.21 - valid codes",
+                "UHC payer rules - passed",
+                "Extracting data from 32 EDI segments",
+                "MARTINEZ, JENNIFER L, DOB: 08/14/1972",
+                "REF*G1*AUTH-2024-MRI-78345 extracted",
+                "1 line: 73721:RT ($1,800)",
+                "Roberts, Michael J MD (NPI: 1847362951)",
+                "Claim object: CLM-2024-1205-583927",
+                "Auth reference flagged for Step 4 validation"
+            ],
+            "artifacts": [
+                {
+                    "type": "file",
+                    "label": "Parsed EDI",
+                    "id": "art-edi-100",
+                    "icon": "file",
+                    "pdfPath": "/data/case_100/Martinez_Step1_EDI_837_Explained.pdf"
+                }
+            ]
+        },
+        {
+            "id": "act_1764918788739",
+            "time": "12:43 PM",
+            "title": "Eligibility Verification",
+            "type": "success",
+            "status": "success",
+            "reasoning": [
+                "Member: UHC-5839274, DOS: 2024-12-05",
+                "Connected to Facets Membership Module",
+                "MARTINEZ, JENNIFER L - record verified",
+                "Plan: Choice Plus PPO, Group: TFSI2024",
+                "Ded: $1500 (MET), Coins: 80/20",
+                "Querying auth AUTH-2024-MRI-78345",
+                "Status: APPROVED, Valid: 11/20/24-02/18/25",
+                "No duplicate claims found",
+                "Eligible, auth on file"
+            ],
+            "artifacts": [
+                {
+                    "type": "file",
+                    "label": "Auth confimed on file",
+                    "id": "art-eligibility-100",
+                    "icon": "file",
+                    "pdfPath": "/data/case_100/Martinez_Step2_Eligibility_Verification.pdf"
+                }
+            ]
+        },
+        {
+            "id": "act_1764918792803",
+            "time": "12:43 PM",
+            "title": "Provider Validation",
+            "type": "success",
+            "status": "success",
+            "reasoning": [
+                "2 providers: Facility, Ordering",
+                "Query NPI 1629384750",
+                "Austin Advanced Imaging - Active",
+                "Contract UHC-AAIC-2023-567 active",
+                "NPI 1629384750 matches auth",
+                "Query NPI 1847362951",
+                "Roberts, Michael J MD - Orthopedics",
+                "NPI 1847362951 matches auth",
+                "All providers valid, match auth"
+            ],
+            "artifacts": [
+                {
+                    "type": "file",
+                    "label": "Provider Validation",
+                    "id": "art-provider-100",
+                    "icon": "file",
+                    "pdfPath": "/data/case_100/Martinez_Step3_Provider_Validation.pdf"
+                }
+            ]
+        },
+        {
+            "id": "act_1764918795000",
+            "time": "12:44 PM",
+            "title": "Authorization Validation",
+            "type": "success",
+            "status": "success",
+            "reasoning": [
+                "Auth: AUTH-2024-MRI-78345",
+                "Querying UHC Prior Auth System",
+                "AUTH-2024-MRI-78345 exists in system",
+                "Status: APPROVED (not cancelled)",
+                "Expires 02/18/2025 (not expired)",
+                "Auth effective: 11/20/2024",
+                "Auth expires: 02/18/2025 (Claim: 12/05/24 in 11/20/24-02/18/25)",
+                "Claim CPT: 73721, Auth CPT: 73721",
+                "Claim Modifier: RT, Auth Modifier: RT",
+                "Claim Quantity: 1, Auth Quantity: 1 (1 ≤ 1)",
+                "Claim DX: M23.21, Auth DX: M23.21",
+                "NPI 1847362951 matches auth",
+                "NPI 1629384750 matches auth",
+                "UHC-5839274 matches auth",
+                "08/14/1972 matches auth",
+                "Martinez, Jennifer L matches",
+                "18/18 validations successful",
+                "PRE-APPROVED via authorization",
+                "Auth validated, clinical review bypassed"
+            ],
+            "artifacts": [
+                {
+                    "type": "file",
+                    "label": "Authorization Validation",
+                    "id": "art-auth-val-100",
+                    "icon": "file",
+                    "pdfPath": "/data/case_100/Martinez_Step4_Authorization_Validation.pdf"
+                }
+            ]
+        },
+        {
+            "id": "act_1764918797000",
+            "time": "12:45 PM",
+            "title": "Pricing & Adjudication",
+            "type": "success",
+            "status": "success",
+            "reasoning": [
+                "1 service line, $1,800 billed",
+                "UHC Texas Radiology 2024",
+                "73721:RT: Billed $1,800, Allowed $850",
+                "$1,500/$1,500 met - $0 applies",
+                "$850 × 20% = $170 member",
+                "$2,340 + $170 = $2,510 YTD",
+                "Plan: $680, Member: $170",
+                "Claim adjudicated"
+            ],
+            "artifacts": [
+                {
+                    "type": "file",
+                    "label": "In-network pricing: $850 allowed",
+                    "id": "art-pricing-100",
+                    "icon": "file",
+                    "pdfPath": "/data/case_100/Martinez_Step5_Pricing_Adjudication.pdf"
+                }
+            ]
+        },
+        {
+            "id": "act_1764918799000",
+            "time": "12:46 PM",
+            "title": "Coordination of Benefits",
+            "type": "success",
+            "status": "success",
+            "reasoning": [
+                "Checking for other coverage",
+                "Other Insurance: NOT PRESENT",
+                "No other coverage on file",
+                "Age 52 - not Medicare eligible",
+                "850 employees - no MSP concerns",
+                "UHC PRIMARY, sole payer",
+                "No COB required"
+            ],
+            "artifacts": [
+                {
+                    "type": "file",
+                    "label": "UHC primary, no other coverage",
+                    "id": "art-cob-100",
+                    "icon": "file",
+                    "pdfPath": "/data/case_100/Martinez_Step6_COB_Determination.pdf"
+                }
+            ]
+        },
+        {
+            "id": "act_1764918801000",
+            "time": "12:47 PM",
+            "title": "Payment & Remittance",
+            "type": "success",
+            "status": "success",
+            "reasoning": [
+                "Generating remittance",
+                "Contractual adjustment: $950",
+                "Member coinsurance: $170",
+                "Prior authorization confirmed",
+                "Remittance with REF*6R auth ref",
+                "Member EOB with auth confirmation",
+                "$680 ACH to 1629384750",
+                "Trace: EFT-20241209-068000",
+                "All outputs generated"
+            ],
+            "artifacts": [
+                {
+                    "type": "file",
+                    "label": "EDI 835 with REF*6R auth reference",
+                    "id": "art-remit-100",
+                    "icon": "file",
+                    "pdfPath": "/data/case_100/Martinez_Step7_EDI_835_Remittance.pdf"
+                },
+                {
+                    "type": "file",
+                    "label": "$680 EFT to provider",
+                    "id": "art-eft-100",
+                    "icon": "file",
+                    "pdfPath": "/data/case_100/Martinez_Step7_EFT_Confirmation.pdf"
+                },
+                {
+                    "type": "file",
+                    "label": "EOB with auth confirmation",
+                    "id": "art-eob-100",
+                    "icon": "file",
+                    "pdfPath": "/data/case_100/Martinez_Step7_Patient_EOB.pdf"
+                }
+            ]
+        }
+    ],
+    "keyDetails": {
+        "Date of Service": "December 5, 2024",
+        "CPT Code": "73721 (MRI knee without contrast)",
+        "Modifier RT": "(Right side)",
+        "ICD-10 Code": "M23.21 (Derangement of medial meniscus, right knee)",
+        "Billed Amount": "$1,800.00",
+        "Submitting Provider": "Austin Advanced Imaging Center",
+        "Ordering Physician": "Dr. Michael J. Roberts (Orthopedics)",
+        "Authorization Reference": "REF*G1*AUTH-2024-MRI-78345",
+        "Status": "Complete"
+    },
+    "sidebarArtifacts": [
+        {
+            "type": "file",
+            "label": "UHC Prior Authorization",
+            "id": "art-claim-100",
+            "icon": "file",
+            "pdfPath": "/data/case_100/claim_submission.pdf"
+        },
+        {
+            "type": "file",
+            "label": "Patient Info",
+            "id": "art-patient-100",
+            "icon": "file",
+            "pdfPath": "/data/case_100/Martinez_Step1_Patient_Demographics.pdf"
+        },
+        {
+            "type": "file",
+            "label": "Parsed EDI",
+            "id": "art-edi-100",
+            "icon": "file",
+            "pdfPath": "/data/case_100/Martinez_Step1_EDI_837_Explained.pdf"
+        },
+        {
+            "type": "file",
+            "label": "Auth confimed on file",
+            "id": "art-eligibility-100",
+            "icon": "file",
+            "pdfPath": "/data/case_100/Martinez_Step2_Eligibility_Verification.pdf"
+        },
+        {
+            "type": "file",
+            "label": "Provider Validation",
+            "id": "art-provider-100",
+            "icon": "file",
+            "pdfPath": "/data/case_100/Martinez_Step3_Provider_Validation.pdf"
+        },
+        {
+            "type": "file",
+            "label": "Authorization Validation",
+            "id": "art-auth-val-100",
+            "icon": "file",
+            "pdfPath": "/data/case_100/Martinez_Step4_Authorization_Validation.pdf"
+        },
+        {
+            "type": "file",
+            "label": "In-network pricing: $850 allowed",
+            "id": "art-pricing-100",
+            "icon": "file",
+            "pdfPath": "/data/case_100/Martinez_Step5_Pricing_Adjudication.pdf"
+        },
+        {
+            "type": "file",
+            "label": "UHC primary, no other coverage",
+            "id": "art-cob-100",
+            "icon": "file",
+            "pdfPath": "/data/case_100/Martinez_Step6_COB_Determination.pdf"
+        },
+        {
+            "type": "file",
+            "label": "EDI 835 with REF*6R auth reference",
+            "id": "art-remit-100",
+            "icon": "file",
+            "pdfPath": "/data/case_100/Martinez_Step7_EDI_835_Remittance.pdf"
+        },
+        {
+            "type": "file",
+            "label": "$680 EFT to provider",
+            "id": "art-eft-100",
+            "icon": "file",
+            "pdfPath": "/data/case_100/Martinez_Step7_EFT_Confirmation.pdf"
+        },
+        {
+            "type": "file",
+            "label": "EOB with auth confirmation",
+            "id": "art-eob-100",
+            "icon": "file",
+            "pdfPath": "/data/case_100/Martinez_Step7_Patient_EOB.pdf"
+        }
+    ]
+}

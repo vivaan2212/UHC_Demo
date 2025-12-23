@@ -1,0 +1,84 @@
+{
+    "logs": [
+        {
+            "id": "act0",
+            "time": "04:05 PM",
+            "title": "Received request for Cash Position Data from 1st to 15th March 2024 with Daily steps",
+            "type": "success"
+        },
+        {
+            "id": "act1",
+            "time": "04:06 PM",
+            "title": "Logged into Kyriba Portal with OTP Authentication",
+            "type": "success",
+            "artifacts": [
+                {
+                    "type": "video",
+                    "label": "Login Video",
+                    "id": "art-login-video",
+                    "icon": "video",
+                    "videoPath": "/videos/Process 1.webm"
+                }
+            ]
+        },
+        {
+            "id": "act2",
+            "time": "04:06 PM",
+            "title": "Applied Date filters to extract Cash Position Data: Daily steps - 1st to 15th March 2024",
+            "type": "success",
+            "artifacts": [
+                {
+                    "type": "video",
+                    "label": "Extraction Video",
+                    "id": "art-extract-video",
+                    "icon": "video",
+                    "videoPath": "/videos/Process 1.webm"
+                }
+            ]
+        },
+        {
+            "id": "act3",
+            "time": "04:07 PM",
+            "title": "Successfully downloaded filtered PDF",
+            "type": "success",
+            "artifacts": [
+                {
+                    "type": "file",
+                    "label": "Cash Position PDF",
+                    "id": "art-cash-pdf",
+                    "icon": "file",
+                    "pdfPath": "/march_1st_15th_data.pdf"
+                }
+            ]
+        }
+    ],
+    "keyDetails": {
+        "processName": "Cash Position Extraction",
+        "team": "Cash",
+        "processingDate": "2025-12-02",
+        "status": "Complete"
+    },
+    "sidebarArtifacts": [
+        {
+            "type": "video",
+            "label": "Login Video",
+            "id": "art-login-video",
+            "icon": "video",
+            "videoPath": "/videos/Process 1.webm"
+        },
+        {
+            "type": "video",
+            "label": "Extraction Video",
+            "id": "art-extract-video",
+            "icon": "video",
+            "videoPath": "/videos/Process 1.webm"
+        },
+        {
+            "type": "file",
+            "label": "Cash Position PDF",
+            "id": "art-cash-pdf",
+            "icon": "file",
+            "pdfPath": "/march_1st_15th_data.pdf"
+        }
+    ]
+}
