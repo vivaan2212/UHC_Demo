@@ -179,31 +179,31 @@ const ProcessList = () => {
                                         </td>
 
                                         <td className="px-4 py-2 whitespace-nowrap text-center">
-                                            <span className="text-xs text-gray-600 font-medium">#{process.id}</span>
+                                            <span className="text-xs text-gray-600 font-medium">{process.claimId}</span>
                                         </td>
 
                                         <td className="px-4 py-2 whitespace-nowrap">
-                                            <span className="text-xs text-gray-400">-</span>
+                                            <span className="text-xs text-gray-900">{process.patientName}</span>
                                         </td>
 
                                         <td className="px-4 py-2 whitespace-nowrap">
-                                            <span className="text-xs text-gray-400">-</span>
+                                            <span className="text-xs text-gray-500">{process.memberId}</span>
                                         </td>
 
                                         <td className="px-4 py-2 whitespace-nowrap">
-                                            <span className="text-xs text-gray-400">-</span>
+                                            <span className="text-xs text-gray-500">{process.dos}</span>
                                         </td>
 
                                         <td className="px-4 py-2 whitespace-nowrap">
-                                            <span className="text-xs text-gray-400">-</span>
+                                            <span className="text-xs text-gray-500">{process.cptCode}</span>
                                         </td>
 
                                         <td className="px-4 py-2 whitespace-nowrap">
-                                            <span className="text-xs text-gray-400">-</span>
+                                            <span className="text-xs text-gray-500">{process.provider}</span>
                                         </td>
 
                                         <td className="px-4 py-2 whitespace-nowrap">
-                                            <span className="text-xs text-gray-400">-</span>
+                                            <span className="text-xs text-gray-900 font-medium">{process.billed}</span>
                                         </td>
 
                                         <td className="px-6 py-2 whitespace-nowrap text-xs text-gray-900">

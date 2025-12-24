@@ -2,15 +2,25 @@
     {
         "id": "100",
         "stockId": "Claim Submission Received",
-        "name": "MRI Claim",
-        "year": "2025-12-05",
+        "claimId": "CLM-2024-1205-583927",
+        "patientName": "Jennifer L. Martinez",
+        "memberId": "UHC-5839274",
+        "dos": "2024-12-05",
+        "cptCode": "73721",
+        "provider": "Austin Advanced Imaging Center",
+        "billed": "$1,800.00",
         "status": "Done"
     },
     {
         "id": "101",
         "stockId": "Claim Submission Received",
-        "name": "MRI Claim",
-        "year": "2025-12-05",
+        "claimId": "CLM-2024-1203-847291",
+        "patientName": "Robert J. Anderson",
+        "memberId": "UHC-8472910",
+        "dos": "2024-12-03",
+        "cptCode": "99214, 93000",
+        "provider": "Austin Primary Care Associates",
+        "billed": "$450.00",
         "status": "Needs Attention"
     }
 ]
