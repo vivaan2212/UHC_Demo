@@ -48,7 +48,7 @@
         {
             "id": "act_101_3",
             "time": "10:02 AM",
-            "title": "Eligibility Verification",
+            "title": "Eligibility Verification - COB Flag MSP verification required",
             "type": "warning",
             "status": "warning",
             "reasoning": [
@@ -162,7 +162,7 @@
         {
             "id": "act_101_7",
             "time": "10:06 AM",
-            "title": "Coordination of Benefits",
+            "title": "Coordination of Benefits - Medicare Primary Determined",
             "type": "warning",
             "status": "warning",
             "reasoning": [
@@ -209,7 +209,7 @@
                     "label": "Browser Agent: COB Check",
                     "id": "vid-cob-101",
                     "icon": "video",
-                    "videoPath": "/data/videos/browser_agent_cob_placeholder.mp4"
+                    "videoPath": "/data/case_101/browser_agent_cob.mov"
                 }
             ]
         },
