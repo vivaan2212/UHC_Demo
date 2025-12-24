@@ -299,7 +299,7 @@ const ProcessDetails = () => {
                             ) : activeArtifact.type === 'video' ? (
                                 <div className="p-4 h-full">
                                     <div className="h-full flex items-center justify-center bg-black rounded-xl overflow-hidden shadow-sm">
-                                        <video controls autoPlay className="max-w-full max-h-full" src={activeArtifact.videoPath}>
+                                        <video controls autoPlay muted className="max-w-full max-h-full" src={activeArtifact.videoPath}>
                                             Your browser does not support the video tag.
                                         </video>
                                     </div>
